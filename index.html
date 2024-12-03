@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Catching Game</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div id="main-content">
+        <div id="game-container">
+            <!-- Basket (Player Element) -->
+            <div id="basket"></div>
+
+            <!-- Score Display -->
+            <div id="score">Score: 0</div>
+
+            <!-- Controls -->
+            <div id="controls">
+                <button id="restart-button">🔄</button>
+                <button id="end-button">❌</button>
+                <div id="lives">
+                    Lives: x x x
+                    <!-- <img class="heart" src="assets/full-heart.png" alt="♥">
+                    <img class="heart" src="assets/full-heart.png" alt="♥">
+                    <img class="heart" src="assets/full-heart.png" alt="♥"> -->
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="game-over">
+                Game Over!<br>
+                <button id="start-button">Start</button>
+            </div>            
+        </div>
+    </div>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>

@@ -68,25 +68,32 @@ header {
 .banana {
     background-image: url(../assets/fruits/banana.png);
 }
-.lemon {
+/* .lemon {
     background-image: url('../assets/fruits/lemon.png');
-}
+} */
 .strawberry {
     background-image: url(../assets/fruits/strawberry.png);
 }
-/* .avocado {
-    background-image: url(../assets/fruits/avacado.png);
-}  */
 
 /* Bomb */
 .bomb {
+    position: absolute;
+    width: 65px; /* Adjust size as needed */
+    height: 65px;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-image: url('../assets/bomb.png');
 }
 
 /* Star */
 .star {
+    position: absolute;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-image: url('../assets/star .png');
-} */
+} 
 
 @keyframes spin {
     from {
@@ -109,6 +116,25 @@ header {
     padding: 5px 10px;
     border-radius: 5px;
 }
+.score-feedback {
+    position: absolute;
+    font-size: 24px;
+    color: orange;
+    font-weight: bold;
+    animation: fadeUp 1s ease-out;
+}
+
+@keyframes fadeUp { /*score +1 text*/
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
 
 /* Game Over Screen */
 #game-over {
@@ -149,41 +175,32 @@ header {
 /* Controls Section */
 #controls {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    gap: 10px;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Vertically center the items */
+    position: absolute; /* Position within the game container */
+    top: 10px; /* Adjust vertical positioning */
+    right: 10px; /* Align to the right */
+    gap: 10px; /* Add space between elements */
 }
 
-/* Restart Button */
-#restart-button {
+#restart-button, #end-button {
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
 }
 
-/* End Button */
-#end-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Lives Display */
 #lives {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 5px; /* Space between hearts */
 }
 
+/* 
 .heart {
     width: 20px;
     height: 20px;
-}
+} */
 
 #start-button {
     position: absolute;

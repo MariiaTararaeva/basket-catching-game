@@ -56,27 +56,27 @@ header {
 /* Falling Items */
 .fallingItems {
     position: absolute;
-    width: 30px; /* Adjust size as needed */
-    height: 30px;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .apple {
-    background-image: url('./assets/fruits/apple.png');
+    background-image: url(../assets/fruits/apple.png);
 }
 .banana {
-    background-image: url('../assets/fruits/banana.png');
+    background-image: url(../assets/fruits/banana.png);
 }
 .lemon {
     background-image: url('../assets/fruits/lemon.png');
 }
 .strawberry {
-    background-image: url('../assets/fruits/strawberry.png');
+    background-image: url(../assets/fruits/strawberry.png);
 }
-.avocado {
-    background-image: url('../assets/fruits/avocado.png');
-} 
+/* .avocado {
+    background-image: url(../assets/fruits/avacado.png);
+}  */
 
 /* Bomb */
 .bomb {

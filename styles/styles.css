@@ -1,0 +1,204 @@
+/* General Styles */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional: light background color */
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Game Container */
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Match the full width */
+    height: 100vh; /* Match full viewport height */
+    margin: 0; /* Remove unnecessary spacing */
+}
+
+#game-container {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    background-color: lightblue;
+    overflow: hidden; /* Prevent falling items from spilling outside */
+    border: 2px solid #45603b; /* Optional: add a border for styling */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+@media (max-height: 700px) {
+    #game-container {
+        width: 400px;
+        height: 500px;
+    }
+}
+
+/* Basket (Player-Controlled Element) */
+#basket {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-image: url('../assets/basket.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Falling Items */
+.fallingItems {
+    position: absolute;
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.apple {
+    background-image: url('./assets/fruits/apple.png');
+}
+.banana {
+    background-image: url('../assets/fruits/banana.png');
+}
+.lemon {
+    background-image: url('../assets/fruits/lemon.png');
+}
+.strawberry {
+    background-image: url('../assets/fruits/strawberry.png');
+}
+.avocado {
+    background-image: url('../assets/fruits/avocado.png');
+} 
+
+/* Bomb */
+.bomb {
+    background-image: url('../assets/bomb.png');
+}
+
+/* Star */
+.star {
+    background-image: url('../assets/star .png');
+} */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Score Display */
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #719b6a;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Game Over Screen */
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 40px;
+    border-radius: 10px;
+    display: none; /* Initially hidden */
+    text-align: center;
+}
+
+/* Start/Restart Button */
+#start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Make it visible */
+}
+
+
+#start-button:hover {
+    background-color: #319f4a; 
+}
+/* Controls Section */
+#controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    gap: 10px;
+}
+
+/* Restart Button */
+#restart-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* End Button */
+#end-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Lives Display */
+#lives {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.heart {
+    width: 20px;
+    height: 20px;
+}
+
+#start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #45a049;
+}

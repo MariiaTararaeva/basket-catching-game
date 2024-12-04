@@ -6,8 +6,33 @@
 //TODO add start & game-over with score screens
 //TODO stopItemDrops build method to end the game  
 //TODO add eventListeners to buttons (restart and stop buttom)
-//TODO add lives to the basket css?? add timer??
+//TODO add lives to the basket css?? add timer?? change basket to superman
 
+//Start Screen
+document.addEventListener("DOMContentLoaded", () => {
+    const startScreen = document.getElementById("start-screen");
+    const mainContent = document.getElementById("main-content");
+    const startGameButton = document.getElementById("start-game-button");
+    const bestScoreElement = document.getElementById("best-score");
+
+    // Simulate getting the best score from localStorage
+    const bestScore = localStorage.getItem("bestScore") || 0;
+    bestScoreElement.textContent = `Best Score: ${bestScore}`;
+
+    // Start the game when the button is clicked
+    startGameButton.addEventListener("click", () => {
+        startScreen.style.display = "none";
+        mainContent.style.display = "block";
+        startGame();
+    });
+
+    function startGame() {
+        console.log("Game started!"); // Replace with actual game initialization logic
+        // Initialize game elements and logic here
+    }
+
+    // You can add logic for the restart button or game-over screen here
+});
 
 // Basket Class
 class Basket {
@@ -191,7 +216,7 @@ class Game {
     this.container = document.getElementById(containerId);
     this.basket = new Basket(document.getElementById(basketId), this.container);
     this.scoreElement = document.getElementById(scoreId);
-    this.fruits = ["apple", "banana", "strawberry"];
+    this.fruits = ["girl", "boy", "man", "woman", "star"];
     this.score = 0;
     this.lives = 3; // Start with 3 lives
     this.gameSpeed = 1000; // Initial item drop interval (1 second)

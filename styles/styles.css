@@ -1,10 +1,9 @@
 /* General Styles */
 body {
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh; /* Full viewport height */
+
     background-color: #f0f0f0; /* Optional: light background color */
     overflow: hidden;
 }
@@ -13,30 +12,91 @@ header {
     text-align: center;
     margin: 20px;
 }
-
-/* Game Container */
-#main-content {
+/*Start Screen*/
+#start-screen {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 100%; /* Match the full width */
-    height: 100vh; /* Match full viewport height */
-    margin: 0; /* Remove unnecessary spacing */
+    justify-content: center;
+    height: 100vh;
+    width:40%;
+    text-align: center;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-image: url(../assets/startScreen.png);
+}
+
+#start-screen h1 {
+    position: absolute;
+    top:10px;
+    background-color: rgba(140, 58, 58, 0.8); 
+    color: rgb(249, 251, 248); /* Text color */
+    padding: 10px 20px; /* Add spacing around the text */
+    border-radius: 8px; /* Optional: rounded corners */
+    font-size: 2em; /* Adjust font size */
+    margin: 10px 0; /* Spacing between elements */
+    text-align: center;
+}
+
+#center-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px 30px; /* Add padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 80%; /* Optional: Additional spacing */
+}
+
+#game-description, #best-score {
+    margin: 10px 0; /* Add spacing between elements */
+    color: black; /* Ensure text is black */
+}
+#button-container {
+    display: flex; /* Arrange buttons in a row */
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px; /* Add spacing above the buttons */
+}
+#start-game-button, #restart-game-button {
+    padding: 8px 8px; /* Button padding */
+    border: none; /* Remove default border */
+    background-color: #8c3a3a; /* Button background */
+    color: white; /* Button text color */
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer */
+}
+#start-game-button:hover, #restart-game-button:hover {
+    background-color: #6f2d2d; /* Darker background on hover */
+}
+
+@media (max-width: 768px) {
+    #start-screen h1 {
+        font-size: 1.5em;
+    }
+
+    #start-screen p {
+        font-size: 1em;
+    }
 }
 
 #game-container {
     position: relative;
-    width: 500px;
-    height: 600px;
+    margin:20px;
+    width: 850px;
+    height: 1200px;
     background-color: lightblue;
     overflow: hidden; /* Prevent falling items from spilling outside */
     border: 2px solid #45603b; /* Optional: add a border for styling */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-@media (max-height: 700px) {
+@media (max-height: 1200px) {
     #game-container {
-        width: 400px;
-        height: 500px;
+        width: 700px;
+        height: 900px;
     }
 }
 
@@ -46,9 +106,9 @@ header {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
-    background-image: url('../assets/basket.png');
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/superman-catch.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -62,17 +122,41 @@ header {
     background-repeat: no-repeat;
 }
 
-.apple {
-    background-image: url(../assets/fruits/apple.png);
+.girl {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/fruits/fallingGirl.png);
 }
-.banana {
-    background-image: url(../assets/fruits/banana.png);
+.boy {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/fruits/fallingBoy.png);
 }
-/* .lemon {
-    background-image: url('../assets/fruits/lemon.png');
-} */
-.strawberry {
-    background-image: url(../assets/fruits/strawberry.png);
+.woman {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/fruits/falingWoman.png);
+} 
+.man {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/fruits/fallingMan.png);
 }
 
 /* Bomb */
@@ -82,17 +166,17 @@ header {
     height: 65px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../assets/bomb.png');
+    background-image: url(../assets/crypto.png);
 }
 
 /* Star */
 .star {
     position: absolute;
-    width: 50px; /* Adjust size as needed */
-    height: 50px;
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../assets/star .png');
+    background-image: url(../assets/supermanFull.png);
 } 
 
 @keyframes spin {

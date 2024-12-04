@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fruit Catching Game</title>
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
-    <div id="main-content">
-        <div id="game-container">
-            <!-- Basket (Player Element) -->
-            <div id="basket"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superman Catching Game</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="start-screen">
+      <h1>Superman Catching Game</h1>
 
-            <!-- Score Display -->
-            <div id="score">Score: 0</div>
-
-            <!-- Controls -->
-            <div id="controls">
-                <button id="restart-button">🔄</button>
-                <button id="end-button">❌</button>
-                <div id="lives">
-                    <span>❤️</span>
-                    <span>❤️</span>
-                    <span>❤️</span>
-                </div>
-            </div>
-
-            <!-- Game Over Screen -->
-            <div id="game-over">
-                Game Over!<br>
-                <button id="start-button">Start</button>
-            </div>            
+      <!-- Centered Content -->
+      <div id="center-box">
+        <p id="game-description">
+          Help Superman save the day by catching falling victims and avoiding
+          kryptonite!
+        </p>
+        <p id="best-score">Best Score: 0</p>
+        <!-- Button Container -->
+        <div id="button-container">
+          <button id="start-game-button">Start Game</button>
+          <button id="restart-game-button">Restart Game</button>
         </div>
+      </div>
+    </div>
+
+    <div id="main-content" style="display: none">
+      <div id="game-container">
+        <!-- Basket (Player Element) -->
+        <div id="basket"></div>
+
+        <!-- Score Display -->
+        <div id="score">Score: 0</div>
+
+        <!-- Controls -->
+        <div id="controls">
+          <button id="restart-button">🔄</button>
+          <button id="end-button">❌</button>
+          <div id="lives">
+            <span>❤️</span>
+            <span>❤️</span>
+            <span>❤️</span>
+          </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over">
+          Game Over!<br />
+          <button id="start-button">Start</button>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="js/game.js"></script>
-</body>
+  </body>
 </html>

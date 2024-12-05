@@ -1,13 +1,3 @@
-//TODO reduce amount of bombs drops
-//TODO add for extra points, make them fall less
-//TODO add falling hearts
-//TODO increse basket speed and image
-//TODO add game-over
-//TODO README
-//TODO stopItemDrops build method to end the game
-//TODO add eventListeners to buttons (restart and stop buttom)
-//TODO not have bombs add score - sometimes it does and sometimes it doesn't
-
 //Start Screen
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("start-screen");

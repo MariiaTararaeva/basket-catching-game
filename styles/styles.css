@@ -280,12 +280,6 @@ header {
     gap: 5px; /* Space between hearts */
 }
 
-/* 
-.heart {
-    width: 20px;
-    height: 20px;
-} */
-
 #start-button {
     position: absolute;
     top: 50%;
@@ -302,4 +296,45 @@ header {
 
 #start-button:hover {
     background-color: #45a049;
+}
+
+#game-over-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above other elements */
+    text-align: center;
+}
+
+#game-over-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#game-over-screen #final-score {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+#game-over-screen button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #8c3a3a; /* Button background */
+    color: white; /* Button text color */
+}
+
+#game-over-screen button:hover {
+    background-color: #6f2d2d; /* Darker background on hover */
 }

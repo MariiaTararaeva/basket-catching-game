@@ -22,6 +22,7 @@
         <div id="button-container">
           <button id="start-game-button">Start Game</button>
           <button id="restart-game-button">Restart Game</button>
+          <!-- Game Over Screen -->
         </div>
       </div>
     </div>
@@ -44,15 +45,14 @@
             <span>❤️</span>
           </div>
         </div>
-
-        <!-- Game Over Screen -->
-        <div id="game-over">
-          Game Over!<br />
-          <button id="start-button">Start</button>
-        </div>
       </div>
     </div>
-
+    <div id="game-over-screen" style="display: none">
+      <h1>Game Over</h1>
+      <p id="final-score">Your Score: 0</p>
+      <button id="restart-button">Restart Game</button>
+      <button id="back-to-start-button">Back to Start</button>
+    </div>
     <script type="module" src="js/game.js"></script>
   </body>
 </html>

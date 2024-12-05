@@ -1,37 +1,39 @@
 //TODO reduce amount of bombs drops
-//TODO add stars for extra points, make them fall less
-//TODO add another fruit 
-//TODO add falling hearts 
+//TODO add for extra points, make them fall less
+//TODO add falling hearts
 //TODO increse basket speed and image
-//TODO add start & game-over with score screens
-//TODO stopItemDrops build method to end the game  
+//TODO add game-over
+//TODO README
+//TODO stopItemDrops build method to end the game
 //TODO add eventListeners to buttons (restart and stop buttom)
-//TODO add lives to the basket css?? add timer?? change basket to superman
+//TODO not have bombs add score - sometimes it does and sometimes it doesn't
 
 //Start Screen
 document.addEventListener("DOMContentLoaded", () => {
-    const startScreen = document.getElementById("start-screen");
-    const mainContent = document.getElementById("main-content");
-    const startGameButton = document.getElementById("start-game-button");
-    const bestScoreElement = document.getElementById("best-score");
+  const startScreen = document.getElementById("start-screen");
+  const mainContent = document.getElementById("main-content");
+  const startGameButton = document.getElementById("start-game-button");
+  const bestScoreElement = document.getElementById("best-score");
 
-    // Simulate getting the best score from localStorage
-    const bestScore = localStorage.getItem("bestScore") || 0;
-    bestScoreElement.textContent = `Best Score: ${bestScore}`;
+  // Simulate getting the best score from localStorage
+  const bestScore = localStorage.getItem("bestScore") || 0;
+  bestScoreElement.textContent = `Best Score: ${bestScore}`;
 
-    // Start the game when the button is clicked
-    startGameButton.addEventListener("click", () => {
-        startScreen.style.display = "none";
-        mainContent.style.display = "block";
-        startGame();
-    });
+  // Start the game when the button is clicked
+  startGameButton.addEventListener("click", () => {
+    startScreen.style.display = "none";
+    mainContent.style.display = "block";
+    startGame();
+  });
 
-    function startGame() {
-        console.log("Game started!"); // Replace with actual game initialization logic
-        // Initialize game elements and logic here
-    }
+  function startGame() {
+    console.log("Game started!"); // Replace with actual game initialization logic
+    // Initialize game elements and logic here
+    const game = new Game("game-container", "basket", "score");
+    game.start();
+  }
 
-    // You can add logic for the restart button or game-over screen here
+  // You can add logic for the restart button or game-over screen here
 });
 
 // Basket Class
@@ -235,18 +237,17 @@ class Game {
           this.updateScore();
           this.caughtCount++; // Increment the counter
           this.adjustGameSpeed(); // Check if speed should be adjusted
-        }else{
-            this.updateLives();
+        } else {
+          this.updateLives();
         }
       });
     }, this.gameSpeed);
 
     this.bombDropInterval = setInterval(() => {
-        new Bomb(this.container, this.basket, (type) => {
-            this.updateLives();
-        });
-      }, this.gameSpeed);
-
+      new Bomb(this.container, this.basket, (type) => {
+        this.updateLives();
+      });
+    }, this.gameSpeed);
   }
 
   updateScore() {
@@ -283,14 +284,45 @@ class Game {
 
   //End game
   endGame() {
-    stopItemDrops();
-    document.getElementById("game-over").style.display = "block";
-  }
-  // endGame();
-}
+    //End Game
+    const gameOverScreen = document.getElementById("game-over-screen");
+    const finalScoreElement = document.getElementById("final-score");
+    const restartButton = document.getElementById("restart-button");
+    const backToStartButton = document.getElementById("back-to-start-button");
+    // stopItemDrops();
+    gameOverScreen.style.display = "flex";
 
-// Initialize the game
-document.addEventListener("DOMContentLoaded", () => {
-  const game = new Game("game-container", "basket", "score");
-  game.start();
-});
+    // Show the final score
+    finalScoreElement.textContent = `Your Score: ${this.score}`;
+    clearInterval(this.dropInterval);
+    clearInterval(this.bombDropInterval);
+    // Function to restart the game
+    restartButton.addEventListener("click", () => {
+      // Reset game state
+      lives = 3;
+      score = 0;
+      gameOverScreen.style.display = "none";
+      this.start(); // Restart your game logic
+    });
+
+    // Function to go back to the start screen
+    backToStartButton.addEventListener("click", () => {
+      gameOverScreen.style.display = "none";
+      document.getElementById("game-container").style.display = "none";
+      document.getElementById("start-screen").style.display = "flex";
+    });
+
+    // Example: Start the game function
+    function startGame() {
+      document.getElementById("start-screen").style.display = "none";
+      document.getElementById("game-container").style.display = "block";
+
+      // Reset lives, score, and start game logic
+      lives = 3;
+      score = 0;
+      updateLivesDisplay();
+      updateScoreDisplay();
+      // Add your game loop or logic to start the game
+    }
+  }
+}

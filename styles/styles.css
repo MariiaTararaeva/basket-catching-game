@@ -1,340 +1,356 @@
 /* General Styles */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
 
-    background-color: #f0f0f0; /* Optional: light background color */
-    overflow: hidden;
+  background-color: #f0f0f0; /* Optional: light background color */
+  overflow: hidden;
 }
 
 header {
-    text-align: center;
-    margin: 20px;
+  text-align: center;
+  margin: 20px;
 }
 /*Start Screen*/
 #start-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width:40%;
-    text-align: center;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-image: url(../assets/startScreen.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 50%;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../assets/startScreen.png);
+  background-color: rgba(0, 0, 0, 0.3); /* Black with 50% opacity */
+  background-blend-mode: overlay;
 }
 
 #start-screen h1 {
-    position: absolute;
-    top:10px;
-    background-color: rgba(140, 58, 58, 0.8); 
-    color: rgb(249, 251, 248); /* Text color */
-    padding: 10px 20px; /* Add spacing around the text */
-    border-radius: 8px; /* Optional: rounded corners */
-    font-size: 2em; /* Adjust font size */
-    margin: 10px 0; /* Spacing between elements */
-    text-align: center;
+  position: absolute;
+  top: 30px;
+  background-color: rgba(140, 58, 58, 0.8);
+  color: rgb(249, 251, 248); /* Text color */
+  padding: 10px 20px; /* Add spacing around the text */
+  border-radius: 8px; /* Optional: rounded corners */
+  font-size: 2em; /* Adjust font size */
+  margin: 10px 0; /* Spacing between elements */
+  text-align: center;
 }
 
 #center-box {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 20px 30px; /* Add padding */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 80%; /* Optional: Additional spacing */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Semi-transparent white background */
+  padding: 20px 30px; /* Add padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 70%; 
 }
 
-#game-description, #best-score {
-    margin: 10px 0; /* Add spacing between elements */
-    color: black; /* Ensure text is black */
+#game-description,
+#best-score {
+  margin: 10px 0; /* Add spacing between elements */
+  color: black; /* Ensure text is black */
 }
 #button-container {
-    display: flex; /* Arrange buttons in a row */
-    gap: 10px; /* Space between buttons */
-    margin-top: 15px; /* Add spacing above the buttons */
+  display: flex; /* Arrange buttons in a row */
+  gap: 10px; /* Space between buttons */
+  margin-top: 15px; /* Add spacing above the buttons */
 }
-#start-game-button, #restart-game-button {
-    padding: 8px 8px; /* Button padding */
-    border: none; /* Remove default border */
-    background-color: #8c3a3a; /* Button background */
-    color: white; /* Button text color */
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer; /* Change cursor to pointer */
+#start-game-button,
+#restart-game-button {
+  padding: 8px 8px; /* Button padding */
+  border: none; /* Remove default border */
+  background-color: #8c3a3a; /* Button background */
+  color: white; /* Button text color */
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer; /* Change cursor to pointer */
 }
-#start-game-button:hover, #restart-game-button:hover {
-    background-color: #6f2d2d; /* Darker background on hover */
+#start-game-button:hover,
+#restart-game-button:hover {
+  background-color: #6f2d2d; /* Darker background on hover */
 }
 
 @media (max-width: 768px) {
-    #start-screen h1 {
-        font-size: 1.5em;
-    }
+  #start-screen h1 {
+    font-size: 1.5em;
+  }
 
-    #start-screen p {
-        font-size: 1em;
-    }
+  #start-screen p {
+    font-size: 1em;
+  }
+  #start-game-button,
+  #restart-game-button {
+    font-size: 10px;
+  }
+  #start-screen h1 {
+    font-size: 20px;
+  }
 }
 
 #game-container {
-    position: relative;
-    margin:20px;
-    width: 850px;
-    height: 1200px;
-    background-color: lightblue;
-    overflow: hidden; /* Prevent falling items from spilling outside */
-    border: 2px solid #45603b; /* Optional: add a border for styling */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  margin: 10px; /* Center the container */
+  width: 70vw; /* Make width responsive to viewport */
+  max-width: 650px; /* Set a maximum width for larger screens */
+  height: 94vh; /* Make height responsive to viewport */
+  max-height: 100%; /* Set a maximum height for larger screens */
+  background-size: cover;
+  background-image: url(../assets/background.png);
+  background-repeat: no-repeat;
+  overflow: hidden; /* Prevent falling items from spilling outside */
+  border: 2px solid #010201; /* Optional: add a border for styling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.4); /* Black with 50% opacity */
+  background-blend-mode: overlay;
+  cursor: none; /* Change cursor to pointer */
 }
-@media (max-height: 1200px) {
-    #game-container {
-        width: 700px;
-        height: 900px;
-    }
+/* Adjust size for smaller screens */
+@media (max-height: 800px) {
+  #game-container {
+    width: 90vw;
+    height: 90vh;
+  }
 }
 
 /* Basket (Player-Controlled Element) */
 #basket {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/superman-catch.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background-image: url(../assets/superman-catch.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* Falling Items */
 .fallingItems {
-    position: absolute;
-    width: 50px; /* Adjust size as needed */
-    height: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
+  position: absolute;
+  width: 27px; /* Adjust size as needed */
+  height: 27px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .girl {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/fruits/fallingGirl.png);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background-image: url(../assets/fruits/fallingGirl.png);
 }
 .boy {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/fruits/fallingBoy.png);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background-image: url(../assets/fruits/fallingBoy.png);
 }
 .woman {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/fruits/falingWoman.png);
-} 
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background-image: url(../assets/fruits/falingWoman.png);
+}
 .man {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/fruits/fallingMan.png);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background-image: url(../assets/fruits/fallingMan.png);
 }
 
 /* Bomb */
 .bomb {
-    position: absolute;
-    width: 65px; /* Adjust size as needed */
-    height: 65px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../assets/crypto.png);
+  position: absolute;
+  width: 55px; /* Adjust size as needed */
+  height: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../assets/crypto.png);
 }
 
-/* Star */
-.star {
-    position: absolute;
-    width: 200px; /* Adjust size as needed */
-    height: 200px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../assets/supermanFull.png);
-} 
-
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Score Display */
 #score {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #719b6a;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #719b6a;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 .score-feedback {
-    position: absolute;
-    font-size: 24px;
-    color: orange;
-    font-weight: bold;
-    animation: fadeUp 1s ease-out;
+  position: absolute;
+  font-size: 24px;
+  color: orange;
+  font-weight: bold;
+  animation: fadeUp 1s ease-out;
 }
 
-@keyframes fadeUp { /*score +1 text*/
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
+@keyframes fadeUp {
+  /*score +1 text*/
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
 }
-
 
 /* Game Over Screen */
 #game-over {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: bold;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px 40px;
-    border-radius: 10px;
-    display: none; /* Initially hidden */
-    text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: none; /* Initially hidden */
+  text-align: center;
 }
 
 /* Start/Restart Button */
 #start-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block; /* Make it visible */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Make it visible */
 }
 
-
 #start-button:hover {
-    background-color: #319f4a; 
+  background-color: #319f4a;
 }
 /* Controls Section */
 #controls {
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    align-items: center; /* Vertically center the items */
-    position: absolute; /* Position within the game container */
-    top: 10px; /* Adjust vertical positioning */
-    right: 10px; /* Align to the right */
-    gap: 10px; /* Add space between elements */
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Vertically center the items */
+  position: absolute; /* Position within the game container */
+  top: 10px; /* Adjust vertical positioning */
+  right: 10px; /* Align to the right */
+  gap: 10px; /* Add space between elements */
 }
 
-#restart-button, #end-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+#restart-button,
+#end-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 #lives {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Space between hearts */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between hearts */
 }
 
 #start-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #start-button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 #game-over-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* Ensure it's above other elements */
-    text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's above other elements */
+  text-align: center;
 }
 
 #game-over-screen h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
 #game-over-screen #final-score {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
 }
 
 #game-over-screen button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #8c3a3a; /* Button background */
-    color: white; /* Button text color */
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #8c3a3a; /* Button background */
+  color: white; /* Button text color */
 }
 
 #game-over-screen button:hover {
-    background-color: #6f2d2d; /* Darker background on hover */
+  background-color: #6f2d2d; /* Darker background on hover */
 }

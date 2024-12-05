@@ -27,8 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function startGame() {
-    console.log("Game started!"); // Replace with actual game initialization logic
-    // Initialize game elements and logic here
     const game = new Game("game-container", "basket", "score");
     game.start();
   }
@@ -44,23 +42,37 @@ class Basket {
     this.position = this.container.offsetWidth / 2;
     this.setupMovement();
   }
-
   setupMovement() {
+    // Keyboard movement
     document.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") {
-        this.position = Math.max(
-          0 + this.element.offsetWidth / 2,
-          this.position - 30 //speed of the touch
-        );
-      } else if (event.key === "ArrowRight") {
-        this.position = Math.min(
-          this.container.offsetWidth - this.element.offsetWidth / 2,
-          this.position + 30 //speed of touch //TO DO increase speed when holding key
-        );
-      }
-      this.updatePosition();
+        if (event.key === "ArrowLeft") {
+            this.position = Math.max(
+                0 + this.element.offsetWidth / 2,
+                this.position - 30 // speed of movement
+            );
+        } else if (event.key === "ArrowRight") {
+            this.position = Math.min(
+                this.container.offsetWidth - this.element.offsetWidth / 2,
+                this.position + 30 // speed of movement
+            );
+        }
+        this.updatePosition();
     });
-  }
+
+    // Mouse movement
+    this.container.addEventListener("mousemove", (event) => {
+        // Get mouse position relative to the container
+        const containerRect = this.container.getBoundingClientRect();
+        const mouseX = event.clientX - containerRect.left;
+
+        // Update the basket's position to follow the mouse
+        this.position = Math.min(
+            Math.max(mouseX, 0 + this.element.offsetWidth / 2),
+            this.container.offsetWidth - this.element.offsetWidth / 2
+        );
+        this.updatePosition();
+    });
+}
 
   updatePosition() {
     this.element.style.left = `${this.position}px`;
@@ -116,12 +128,23 @@ class FallingItem {
   checkCollision() {
     const itemRect = this.element.getBoundingClientRect();
     const basketRect = this.basket.getBoundingRect();
+
+    // Adjust basket dimensions to avoid collisions on the sides
+    const sideMargin = 100; // Adjust this value as needed
+    const adjustedBasketRect = {
+        top: basketRect.top + 100, // Slightly reduce the top collision area
+        bottom: basketRect.bottom - 10, // Slightly reduce the bottom collision area
+        left: basketRect.left + sideMargin, // Add margin to the left
+        right: basketRect.right - sideMargin // Add margin to the right
+    };
+
     return (
-      itemRect.bottom >= basketRect.top &&
-      itemRect.left < basketRect.right &&
-      itemRect.right > basketRect.left
+        itemRect.bottom >= adjustedBasketRect.top &&
+        itemRect.left < adjustedBasketRect.right &&
+        itemRect.right > adjustedBasketRect.left
     );
-  }
+}
+
   createScoreFeedback() {
     // Create  "+1" element
     const feedback = document.createElement("div");
@@ -180,16 +203,26 @@ class Bomb {
     }, 20);
   }
 
+  
   checkCollision() {
-    //see if the fruit collides with basket
-    const itemRect = this.element.getBoundingClientRect(); //exact dimention of the fruit
-    const basketRect = this.basket.getBoundingRect(); //exact dimention of the basket
+    const itemRect = this.element.getBoundingClientRect();
+    const basketRect = this.basket.getBoundingRect();
+
+    // Adjust basket dimensions to avoid collisions on the sides
+    const sideMargin = 30; // Adjust this value as needed
+    const adjustedBasketRect = {
+        top: basketRect.top + 100, // Slightly reduce the top collision area
+        bottom: basketRect.bottom - 10, // Slightly reduce the bottom collision area
+        left: basketRect.left + sideMargin, // Add margin to the left
+        right: basketRect.right - sideMargin // Add margin to the right
+    };
+
     return (
-      itemRect.bottom >= basketRect.top &&
-      itemRect.left < basketRect.right &&
-      itemRect.right > basketRect.left
+        itemRect.bottom >= adjustedBasketRect.top &&
+        itemRect.left < adjustedBasketRect.right &&
+        itemRect.right > adjustedBasketRect.left
     );
-  }
+}
 
   createDeathFeedback() {
     // Create  "-1" live
@@ -229,29 +262,40 @@ class Game {
   }
 
   start() {
+    const endButtonElement = document.getElementById("end-button");
+    // Start the game when the button is clicked
+    endButtonElement.addEventListener("click", () => {
+      this.endGame();
+    });
+
+    document.getElementById("game-container").style.display = "block";
     this.dropInterval = setInterval(() => {
       const fruitType =
         this.fruits[Math.floor(Math.random() * this.fruits.length)];
       new FallingItem(fruitType, this.container, this.basket, (type) => {
         if (type !== "bomb") {
-          this.updateScore();
+          this.updateScore(false);
           this.caughtCount++; // Increment the counter
           this.adjustGameSpeed(); // Check if speed should be adjusted
         } else {
-          this.updateLives();
+          this.updateLives(false);
         }
       });
     }, this.gameSpeed);
 
     this.bombDropInterval = setInterval(() => {
       new Bomb(this.container, this.basket, (type) => {
-        this.updateLives();
+        this.updateLives(false);
       });
-    }, this.gameSpeed);
+    }, 3000);
   }
 
-  updateScore() {
-    this.score += 100;
+  updateScore(restart) {
+    if (restart) {
+      this.score = 0;
+    } else {
+      this.score += 100;
+    }
     this.scoreElement.textContent = `Score: ${this.score}`;
   }
 
@@ -264,9 +308,13 @@ class Game {
       this.start(); // Restart the item drop with the new speed
     }
   }
-  updateLives() {
+  updateLives(restart) {
     const livesDisplay = document.getElementById("lives");
-    this.lives -= 1; // Decrement lives
+    if (restart) {
+      this.lives = 3;
+    } else {
+      this.lives -= 1;
+    } // Decrement lives
     livesDisplay.innerHTML = ""; // Clear current lives display
 
     // Add hearts based on remaining lives
@@ -294,35 +342,37 @@ class Game {
 
     // Show the final score
     finalScoreElement.textContent = `Your Score: ${this.score}`;
+
     clearInterval(this.dropInterval);
     clearInterval(this.bombDropInterval);
+    const bestScore = localStorage.getItem("bestScore") || 0;
+    if (bestScore < this.score) {
+      localStorage.setItem("bestScore", this.score);
+    }
     // Function to restart the game
     restartButton.addEventListener("click", () => {
-      // Reset game state
-      lives = 3;
-      score = 0;
+      // restartButton.addEventListener("click", () => {
+      console.log("Pressed");
+      clearInterval(this.dropInterval);
+      clearInterval(this.bombDropInterval);
+
       gameOverScreen.style.display = "none";
-      this.start(); // Restart your game logic
+      document.getElementById("game-container").style.display = "block";
+      this.updateLives(true);
+      this.updateScore(true);
+      this.start();
     });
 
     // Function to go back to the start screen
     backToStartButton.addEventListener("click", () => {
+      this.updateLives(true);
+      this.updateScore(true);
       gameOverScreen.style.display = "none";
-      document.getElementById("game-container").style.display = "none";
+      this.container.style.display = "none";
+      //   document.getElementById("game-container")
       document.getElementById("start-screen").style.display = "flex";
+      document.getElementById("best-score").innerText =
+        "Best Score: " + localStorage.getItem("bestScore");
     });
-
-    // Example: Start the game function
-    function startGame() {
-      document.getElementById("start-screen").style.display = "none";
-      document.getElementById("game-container").style.display = "block";
-
-      // Reset lives, score, and start game logic
-      lives = 3;
-      score = 0;
-      updateLivesDisplay();
-      updateScoreDisplay();
-      // Add your game loop or logic to start the game
-    }
   }
 }
